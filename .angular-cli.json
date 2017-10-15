@@ -22,7 +22,8 @@
         "styles.scss"
       ],
       "scripts": [
-        "../node_modules/particles.js/particles.js"
+        "../node_modules/particles.js/particles.js",
+        "../node_modules/snapsvg/dist/snap.svg-min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
