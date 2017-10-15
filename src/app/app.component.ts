@@ -27,14 +27,31 @@ export class AppComponent implements OnInit {
       stroke: 'white',
       strokeWidth: .2
     });
+
     const brandingText = svg.text(45.2, 50.8, 'Branding');
     brandingText.attr({
       fill: 'white',
       fontFamily: 'helvetica',
       fontSize: '2.5px'
     });
+    setInterval(() => {
+      brandingText.animate({ transform: 's1.1' });
+    }, 1000);
+
     const brandingGroup = svg.group(brandingCircle, brandingText);
     brandingGroup.transform('t-25,-15');
+
+    function startAnimateion() {
+      brandingCircle.animate({ transform: 's1.05' }, 2000, mina.easeInOut, () => {
+        brandingCircle.animate({ transform: 's1' }, 2000, mina.easeInOut);
+      });
+    }
+
+    startAnimateion();
+
+    setInterval(() => {
+      startAnimateion();
+    }, 4000);
   }
 
   loadArchitecture(svg) {
@@ -44,14 +61,28 @@ export class AppComponent implements OnInit {
       stroke: 'white',
       strokeWidth: .2
     });
+
     const architectureText = svg.text(43.5, 50.8, 'Architecture');
     architectureText.attr({
       fill: 'white',
       fontFamily: 'helvetica',
       fontSize: '2.5px'
     });
+
     const architectureGroup = svg.group(architectureCircle, architectureText);
     architectureGroup.transform('t25,-15');
+
+    function startAnimateion() {
+      architectureCircle.animate({ transform: 's1.05' }, 2500, mina.easeInOut, () => {
+        architectureCircle.animate({ transform: 's1' }, 2000, mina.easeInOut);
+      });
+    }
+
+    startAnimateion();
+
+    setInterval(() => {
+      startAnimateion();
+    }, 4500);
   }
 
   loadDigital(svg) {
@@ -61,14 +92,28 @@ export class AppComponent implements OnInit {
       stroke: 'white',
       strokeWidth: .2
     });
+
     const digitalText = svg.text(46.6, 51, 'Digital');
     digitalText.attr({
       fill: 'white',
       fontFamily: 'helvetica',
       fontSize: '2.5px'
     });
+
     const digitalGroup = svg.group(digitalCircle, digitalText);
     digitalGroup.transform('t-25,15');
+
+    function startAnimateion() {
+      digitalCircle.animate({ transform: 's1.05' }, 2300, mina.easeInOut, () => {
+        digitalCircle.animate({ transform: 's1' }, 2200, mina.easeInOut);
+      });
+    }
+
+    startAnimateion();
+
+    setInterval(() => {
+      startAnimateion();
+    }, 4500);
   }
 
   loadSolutions(svg) {
@@ -78,13 +123,27 @@ export class AppComponent implements OnInit {
       stroke: 'white',
       strokeWidth: .2
     });
+
     const solutionsText = svg.text(44.9, 51, 'Solutions');
     solutionsText.attr({
       fill: 'white',
       fontFamily: 'helvetica',
       fontSize: '2.5px'
     });
+
     const solutionsGroup = svg.group(solutionsCircle, solutionsText);
     solutionsGroup.transform('t25,15');
+
+    function startAnimateion() {
+      solutionsCircle.animate({ transform: 's1.05' }, 2200, mina.easeInOut, () => {
+        solutionsCircle.animate({ transform: 's1' }, 2200, mina.easeInOut);
+      });
+    }
+
+    startAnimateion();
+
+    setInterval(() => {
+      startAnimateion();
+    }, 4400);
   }
 }
