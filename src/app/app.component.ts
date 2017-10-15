@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, AfterViewInit } from '@angular/core';
 
+import Parallax from 'parallax-js';
 declare var particlesJS: any;
 declare var Snap: any;
 declare var mina: any;
@@ -9,7 +10,9 @@ declare var mina: any;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
+  constructor(private el: ElementRef) { }
+
   ngOnInit() {
     particlesJS.load('particles', 'assets/particles.json', null);
 
@@ -18,6 +21,13 @@ export class AppComponent implements OnInit {
     this.loadArchitecture(svg);
     this.loadDigital(svg);
     this.loadSolutions(svg);
+  }
+
+  ngAfterViewInit() {
+    const container = this.el.nativeElement.querySelector('#container');
+    const parallax = new Parallax(container);
+    parallax.scalar(30, 30);
+    parallax.friction(0.2, 0.2);
   }
 
   loadBranding(svg) {
@@ -34,16 +44,13 @@ export class AppComponent implements OnInit {
       fontFamily: 'helvetica',
       fontSize: '2.5px'
     });
-    setInterval(() => {
-      brandingText.animate({ transform: 's1.1' });
-    }, 1000);
 
     const brandingGroup = svg.group(brandingCircle, brandingText);
     brandingGroup.transform('t-25,-15');
 
     function startAnimateion() {
-      brandingCircle.animate({ transform: 's1.05' }, 2000, mina.easeInOut, () => {
-        brandingCircle.animate({ transform: 's1' }, 2000, mina.easeInOut);
+      brandingCircle.animate({ transform: 's1.05' }, 1000, mina.easeInOut, () => {
+        brandingCircle.animate({ transform: 's1' }, 1000, mina.easeInOut);
       });
     }
 
@@ -51,7 +58,7 @@ export class AppComponent implements OnInit {
 
     setInterval(() => {
       startAnimateion();
-    }, 4000);
+    }, 2000);
   }
 
   loadArchitecture(svg) {
@@ -73,8 +80,8 @@ export class AppComponent implements OnInit {
     architectureGroup.transform('t25,-15');
 
     function startAnimateion() {
-      architectureCircle.animate({ transform: 's1.05' }, 2500, mina.easeInOut, () => {
-        architectureCircle.animate({ transform: 's1' }, 2000, mina.easeInOut);
+      architectureCircle.animate({ transform: 's1.05' }, 1500, mina.easeInOut, () => {
+        architectureCircle.animate({ transform: 's1' }, 1000, mina.easeInOut);
       });
     }
 
@@ -82,7 +89,7 @@ export class AppComponent implements OnInit {
 
     setInterval(() => {
       startAnimateion();
-    }, 4500);
+    }, 2500);
   }
 
   loadDigital(svg) {
@@ -104,8 +111,8 @@ export class AppComponent implements OnInit {
     digitalGroup.transform('t-25,15');
 
     function startAnimateion() {
-      digitalCircle.animate({ transform: 's1.05' }, 2300, mina.easeInOut, () => {
-        digitalCircle.animate({ transform: 's1' }, 2200, mina.easeInOut);
+      digitalCircle.animate({ transform: 's1.05' }, 1300, mina.easeInOut, () => {
+        digitalCircle.animate({ transform: 's1' }, 1200, mina.easeInOut);
       });
     }
 
@@ -113,7 +120,7 @@ export class AppComponent implements OnInit {
 
     setInterval(() => {
       startAnimateion();
-    }, 4500);
+    }, 2500);
   }
 
   loadSolutions(svg) {
@@ -135,8 +142,8 @@ export class AppComponent implements OnInit {
     solutionsGroup.transform('t25,15');
 
     function startAnimateion() {
-      solutionsCircle.animate({ transform: 's1.05' }, 2200, mina.easeInOut, () => {
-        solutionsCircle.animate({ transform: 's1' }, 2200, mina.easeInOut);
+      solutionsCircle.animate({ transform: 's1.05' }, 1200, mina.easeInOut, () => {
+        solutionsCircle.animate({ transform: 's1' }, 800, mina.easeInOut);
       });
     }
 
